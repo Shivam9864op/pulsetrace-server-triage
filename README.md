@@ -21,7 +21,7 @@ Watch the [60-second walkthrough](media/pulsetrace-walkthrough.mp4) or download 
 
 ## Live demo
 
-The GitHub Pages workflow publishes the static app at `https://shivam9864op.github.io/pulsetrace-server-triage/` after it is enabled in the repository's Pages settings. GitHub Actions deploys the repository files as a static site; no application server is needed.
+The live static app is published at [`https://shivam9864op.github.io/pulsetrace-server-triage/`](https://shivam9864op.github.io/pulsetrace-server-triage/). GitHub Actions redeploys it when `main` changes; no application server is needed.
 
 ## Try the workflow
 
