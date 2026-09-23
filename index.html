@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1422">
+    <meta name="description" content="A local-first evidence desk for sorting Minecraft server lag signals across ping, packet loss, TPS, MSPT and logs.">
+    <title>PulseTrace — Server incident evidence desk</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="PulseTrace home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="brand-name">pulse<span>trace</span></span>
+        </a>
+        <div class="rail-label">WORKSPACE</div>
+        <nav class="rail-nav">
+          <a class="nav-link active" href="#incident" aria-current="page"><span class="nav-icon">⌁</span> Incident desk</a>
+          <a class="nav-link" href="#evidence"><span class="nav-icon">◷</span> Evidence</a>
+          <a class="nav-link" href="#privacy"><span class="nav-icon">◈</span> Privacy check</a>
+        </nav>
+        <div class="rail-spacer"></div>
+        <div class="local-card">
+          <span class="local-dot"></span>
+          <div><strong>Local session</strong><small>Your data stays here</small></div>
+        </div>
+        <div class="rail-foot">PERSONAL DEMO<br><span>SYNTHETIC SAMPLE DATA</span></div>
+      </aside>
+
+      <main id="top" class="main-area">
+        <header class="topbar">
+          <div class="crumb"><span>Workspace</span><b>/</b><strong>Incident desk</strong></div>
+          <div class="top-actions"><span class="privacy-pill"><span class="local-dot"></span> Browser-only · no account</span><button class="icon-button" id="help-button" aria-label="About PulseTrace">?</button></div>
+        </header>
+
+        <div class="page-wrap">
+          <section class="intro" id="incident">
+            <div class="intro-copy">
+              <div class="eyebrow"><span class="eyebrow-line"></span> GAME SERVER RELIABILITY</div>
+              <h1>Find the signal.<br><em>Not the blame.</em></h1>
+              <p>Compare player ping with server tick health and log clues. Get a readable evidence summary before you start changing settings or blaming the network.</p>
+              <div class="intro-meta"><span class="status-tag"><span class="pulse"></span> READY FOR LOCAL ANALYSIS</span><span class="mono">NO PACKET CAPTURE · NO SERVER LOGIN</span></div>
+            </div>
+            <div class="intro-art" aria-hidden="true">
+              <div class="art-grid"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+              <div class="art-core"><div class="core-ring"></div><div class="core-dot"></div></div>
+              <div class="art-label label-one"><span>RTT</span><b>↗</b></div><div class="art-label label-two"><span>MSPT</span><b>↘</b></div>
+              <div class="art-caption">SIGNAL CORRELATION <span>01 / 04</span></div>
+            </div>
+          </section>
+
+          <section class="section-block scenario-block" aria-labelledby="scenario-title">
+            <div class="section-heading"><div><span class="step-number">01</span><h2 id="scenario-title">Choose a scenario</h2></div><span class="section-note">Try the same checks with different symptoms</span></div>
+            <div class="scenario-grid" id="scenario-list" role="group" aria-label="Demo scenarios"></div>
+          </section>
+
+          <section class="section-block analysis-block" aria-labelledby="analysis-title">
+            <div class="section-heading"><div><span class="step-number">02</span><h2 id="analysis-title">Incident snapshot</h2></div><span class="sample-label" id="sample-label">SYNTHETIC DEMO · NETWORK JITTER</span></div>
+            <div class="snapshot-grid">
+              <article class="panel chart-panel">
+                <div class="panel-head"><div><h3>Latency vs. server tick time</h3><p>Milliseconds over the selected sample window</p></div><button class="subtle-button" id="reset-button">Reset demo</button></div>
+                <div class="chart-legend"><span><i class="legend-ping"></i> Player ping (RTT)</span><span><i class="legend-mspt"></i> Server MSPT</span><span><i class="legend-loss"></i> Missing ping sample</span></div>
+                <div class="chart-wrap" id="chart-wrap"><svg id="chart" role="img" aria-label="Latency and server tick time chart"></svg></div>
+                <div class="chart-foot"><span id="window-label">10 samples · 00:00–00:09</span><span class="chart-foot-right">Higher values appear higher on the chart</span></div>
+              </article>
+              <article class="panel diagnosis-panel" id="diagnosis-panel" aria-live="polite"></article>
+            </div>
+            <div class="metrics-grid" id="metrics-grid"></div>
+          </section>
+
+          <section class="section-block evidence-block" id="evidence" aria-labelledby="evidence-title">
+            <div class="section-heading"><div><span class="step-number">03</span><h2 id="evidence-title">Review the evidence</h2></div><span class="section-note">See which checks support the summary</span></div>
+            <div class="evidence-grid">
+              <article class="panel signals-panel"><div class="panel-head"><div><h3>Observed signals</h3><p>Rules are visible; nothing is inferred from a ping spike alone</p></div><span class="tiny-count" id="signal-count">0 CHECKS</span></div><div class="signal-list" id="signal-list"></div></article>
+              <article class="panel timeline-panel"><div class="panel-head"><div><h3>Incident timeline</h3><p>Sample markers and recognized log clues</p></div><span class="tiny-count">LOCAL VIEW</span></div><div class="timeline-list" id="timeline-list"></div></article>
+            </div>
+          </section>
+
+          <section class="section-block import-block" aria-labelledby="import-title">
+            <div class="section-heading"><div><span class="step-number">04</span><h2 id="import-title">Use your own sample</h2></div><span class="section-note">CSV is read in this browser only</span></div>
+            <div class="import-grid">
+              <article class="panel import-panel"><div class="panel-head"><div><h3>Ping + tick samples</h3><p>Required headers: <code>time,ping_ms,tps,mspt</code></p></div><label class="file-button" for="csv-file">Choose CSV</label><input id="csv-file" type="file" accept=".csv,text/csv" hidden></div>
+                <textarea id="csv-input" spellcheck="false" aria-label="CSV telemetry sample" placeholder="time,ping_ms,tps,mspt&#10;00:00,28,20,36&#10;00:01,35,20,42&#10;00:02,timeout,20,38"></textarea>
+                <div class="form-row"><span id="import-status" class="form-status">No data leaves this tab.</span><button class="primary-button" id="analyze-button">Analyze sample <span>→</span></button></div>
+              </article>
+              <article class="panel logs-panel"><div class="panel-head"><div><h3>Optional log clues</h3><p>Paste a few relevant lines; redact before export</p></div><span class="safe-chip">TEXT ONLY</span></div>
+                <textarea id="logs-input" spellcheck="false" aria-label="Optional server log lines" placeholder="Example: Can't keep up! Is the server overloaded? Running 900ms behind"></textarea>
+                <div class="redaction-preview"><span class="shield-icon">◈</span><span id="redaction-status">Potential IPs, emails and UUIDs are removed in exported notes.</span><button class="text-button" id="redact-button">Preview redaction</button></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="section-block export-block" id="privacy" aria-labelledby="export-title">
+            <div class="export-panel"><div class="export-copy"><div class="eyebrow"><span class="eyebrow-line"></span> SHAREABLE HANDOFF</div><h2 id="export-title">Turn the incident into<br>a useful next step.</h2><p>Export what was observed, the checks behind it and what remains unknown. No credentials, server connection or external service required.</p><div class="export-boundary"><strong>Important limit</strong><span>PulseTrace does not detect or stop DDoS attacks. A ping pattern alone cannot prove an attack; ask your host for network-side telemetry.</span></div></div><div class="export-actions"><div class="export-file-icon">.md</div><strong>Evidence brief</strong><span>Includes sample window, summary, formulas and caveats.</span><button id="export-md" class="primary-button">Download Markdown <span>↓</span></button><button id="export-json" class="secondary-button">Download JSON <span>↓</span></button></div></div>
+          </section>
+
+          <footer class="page-footer"><div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><span>pulsetrace</span></div><div>Personal open-source demo · Synthetic data · Local run</div><div>Made for clearer troubleshooting, not attack attribution.</div></footer>
+        </div>
+      </main>
+    </div>
+    <dialog id="about-dialog" class="about-dialog"><button class="dialog-close" id="close-dialog" aria-label="Close">×</button><div class="eyebrow"><span class="eyebrow-line"></span> ABOUT THIS DEMO</div><h2>Evidence triage,<br>not a magic diagnosis.</h2><p>PulseTrace compares the telemetry you provide. It does not connect to a Minecraft server, inspect packets, identify attackers or prove the root cause of an outage.</p><ul><li>Missing samples count as missing in this dataset, not confirmed network packet loss.</li><li>TPS/MSPT trends help separate server tick pressure from network symptoms.</li><li>Thresholds are visible starting points; adapt them to your version, host and test setup.</li></ul><p class="dialog-note">All built-in scenarios are synthetic. Imported CSV and pasted logs are processed in your browser session.</p></dialog>
+    <script type="module" src="src/app.mjs"></script>
+  </body>
+</html>

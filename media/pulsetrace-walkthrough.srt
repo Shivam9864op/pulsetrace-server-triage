@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:08,500
+Ping spikes. Tick health stays steady.
+
+2
+00:00:08,500 --> 00:00:17,000
+MSPT rises while ping stays low: check server tick pressure.
+
+3
+00:00:17,000 --> 00:00:25,500
+Both signals change. The root cause is still unknown.
+
+4
+00:00:25,500 --> 00:00:34,000
+Every flag links to a visible rule and a sample.
+
+5
+00:00:34,000 --> 00:00:42,500
+Import a CSV and compare the same checks with your own sample.
+
+6
+00:00:42,500 --> 00:00:51,000
+Review log clues; common identifiers are redacted before export.
+
+7
+00:00:51,000 --> 00:00:59,500
+Export a clear handoff. No DDoS verdicts or invented causes.

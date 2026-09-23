@@ -1,0 +1,14 @@
+{
+  "name": "pulsetrace-server-triage",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Browser-local Minecraft server incident evidence triage demo",
+  "scripts": {
+    "test": "node --test",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
